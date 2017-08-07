@@ -1,7 +1,7 @@
 package controllers
 
 import akka.util.Timeout
-import wipro.crawler.Crawler
+import wipro.crawler.{Crawler}
 import scala.concurrent.duration._
 import akka.pattern.ask
 import javax.inject._
@@ -14,13 +14,17 @@ import scala.concurrent.ExecutionContext.Implicits.global
 class WebCrawlerController @Inject()(actorSystem: ActorSystem)  extends Controller {
   val baseUrl = "http://wiprodigital.com"
   val maxDepth = 3
-  def getLinks = Action {
-    implicit val timeout: Timeout = 15.minute
-    (actorSystem.actorOf(Props[Crawler](new Crawler(baseUrl,maxDepth))) ! "start")
 
-    Ok("Request Accepted : See console logs for crawling results.")
+  def getLinks = Action {
+    (actorSystem.actorOf(Props[Crawler](new Crawler(baseUrl,maxDepth))) ! "start")
+    Ok(views.html.requestAccepted(baseUrl,maxDepth))
 
   }
-
+  /*def getLinks = Action.async {
+    implicit val timeout: Timeout = 2.minute
+    (actorSystem.actorOf(Props[Crawler](new Crawler(baseUrl,maxDepth))) ? "start").mapTo[List[String]].map {
+      links => Ok(links.mkString("\n"))
+    }
+  }*/
 
 }

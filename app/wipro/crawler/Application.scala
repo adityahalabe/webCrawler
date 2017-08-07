@@ -11,6 +11,6 @@ object Application {
 
   def main(args: Array[String]) {
     val actorSystem = ActorSystem()
-    (actorSystem.actorOf(Props[Crawler](new Crawler(baseUrl,3))) ! "start")
+    (actorSystem.actorOf(Props[Crawler](new Crawler(baseUrl,maxDepth))) ! "start")
   }
 }

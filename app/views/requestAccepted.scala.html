@@ -1,0 +1,51 @@
+@(baseUrl : String, maxDepth : Int)
+<head>
+    <style>
+        table {
+        margin-bottom: 30px;
+        }
+
+        table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        }
+
+        th, td {
+        padding: 10px;
+        }
+
+        caption {
+        display: table-caption;
+        text-align: center;
+        font-size: 200%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <table>
+            <caption>Request Accepted </caption>
+            <tr>
+                <td>Domain URL</td>
+                <td>@baseUrl</td>
+            </tr>
+            <tr>
+                <td>Depth</td>
+                <td>@maxDepth</td>
+            </tr>
+            <tr>
+                <td colspan="2">Files created after completion of task</td>
+            </tr>
+            <tr>
+                <td>All unique links</td>
+                <td>app/output/uniqueLinks.txt</td>
+            </tr>
+            <tr>
+                <td>Mapping of internal links</td>
+                <td>app/output/linkMap.txt</td>
+            </tr>
+
+        </table>
+
+    </div>
+</body>

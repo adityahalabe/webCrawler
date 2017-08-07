@@ -1,5 +1,7 @@
 package wipro.crawler
 
+import javax.inject.Inject
+
 import akka.actor.{Actor, Props}
 
 class Crawler (baseUrl : String,maxDepth : Int) extends Actor{
@@ -16,8 +18,6 @@ class Crawler (baseUrl : String,maxDepth : Int) extends Actor{
         link => context.actorOf(Props[InternalLinkCrawler](new InternalLinkCrawler(baseUrl,link,maxDepth)))
           totalActorsCreated += 1
       }
-      println(s"-------------Total Actors created for task: $totalActorsCreated")
-
     }
     case  (root : String,links : Seq[String]) => {
       crawledData += (root -> links)
@@ -29,11 +29,12 @@ class Crawler (baseUrl : String,maxDepth : Int) extends Actor{
 
     }
     case "done" => {
-      for ((root,links) <- crawledData){
-        println(s"## Link --> $root : Total links originating from this link : " + links.length)
-        println(links.mkString("\n"))
-        println("----------------------------------------------------------------------------------------------------------")
-      }
+      val allUniqueLinks = (for ((root,links) <- crawledData)yield{
+        links
+      }).flatten.toList.distinct
+      SitemapGenerator.writeUniqueLinks(allUniqueLinks,baseUrl,totalActorsCreated)
+      SitemapGenerator.writeMap(crawledData,baseUrl,totalActorsCreated)
+      context.parent ! allUniqueLinks
     }
   }
 }
