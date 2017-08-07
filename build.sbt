@@ -12,7 +12,8 @@ libraryDependencies ++= Seq(
   ws,
   "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test,
   "org.jsoup" % "jsoup" % "1.8.3",
-  "com.google.code" % "sitemapgen4j" % "1.0.1"
+  "com.google.code" % "sitemapgen4j" % "1.0.1",
+  "com.typesafe.akka" % "akka-testkit_2.11" % "2.5.3" % "test"
 
 )
 

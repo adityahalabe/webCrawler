@@ -1,6 +1,7 @@
 This is a Web Crawler
 =================================
 
+
 Controller
 ==========
 
@@ -15,7 +16,7 @@ Actors
  - Crawler
 
    1. Actor which fetches internal links from domain URL.
-   2. It creates separate Actors for each internal link and assign them URL and depth till which they should crawl.
+   2. It creates separate Actors for each internal link and assign them URL and depth.
    3. Collects links crawled by all actors and maintain their mappings.
    4. After everyone is done then calls File generator to create files.
 
@@ -34,3 +35,24 @@ Util
   - SitemapGenerator
 
     1. Write unique links and mapping of links to files
+
+
+How to run
+================================
+   1. Git Clone https://github.com/adityahalabe/webCrawler
+   2. cd webCrawler
+   3. sbt run
+   4. Visit localhost:9000
+   5. Output will be generated after a while, depending on depth you provide in app/output folder.
+
+
+Currently for depth 3, it takes less than a minute to create output files.
+
+
+Things which can be improved
+=================================
+
+   Well, there are many !
+        1. Akka provides separate HTTP module where each request http can be made async.
+        2. Actors test cases can be written in more detail way.
+        3. Actors hierarchy would get more complicated when we go on creating actors in depth more than 2.
