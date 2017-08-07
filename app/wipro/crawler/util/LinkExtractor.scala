@@ -1,6 +1,7 @@
-package wipro.crawler
+package wipro.crawler.util
 
 import org.jsoup.Jsoup
+
 import scala.collection.JavaConverters._
 
 class LinkExtractor {

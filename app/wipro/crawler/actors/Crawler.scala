@@ -1,8 +1,7 @@
-package wipro.crawler
-
-import javax.inject.Inject
+package wipro.crawler.actors
 
 import akka.actor.{Actor, Props}
+import wipro.crawler.util.{LinkExtractor, SitemapGenerator}
 
 class Crawler (baseUrl : String,maxDepth : Int) extends Actor{
 

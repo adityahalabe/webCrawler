@@ -1,7 +1,7 @@
 package controllers
 
 import akka.util.Timeout
-import wipro.crawler.{Crawler}
+import wipro.crawler.actors.Crawler
 import scala.concurrent.duration._
 import akka.pattern.ask
 import javax.inject._

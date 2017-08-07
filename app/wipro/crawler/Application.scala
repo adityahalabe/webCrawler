@@ -1,6 +1,7 @@
 package wipro.crawler
 
 import akka.util.Timeout
+import wipro.crawler.actors.Crawler
 import scala.concurrent.duration._
 import akka.actor.{Props, ActorSystem}
 

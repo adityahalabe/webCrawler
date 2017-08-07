@@ -1,7 +1,6 @@
-package wipro.crawler
+package wipro.crawler.util
 
-import java.io.{PrintWriter, File}
-import com.redfin.sitemapgenerator.{W3CDateFormat, WebSitemapGenerator}
+import java.io.{File, PrintWriter}
 
 object SitemapGenerator {
 

@@ -1,7 +1,7 @@
-package wipro.crawler
+package wipro.crawler.actors
 
 import akka.actor.Actor
-import wipro.crawler.LinkExtractor
+import wipro.crawler.util.LinkExtractor
 
 class InternalLinkCrawler(baseUrl : String,currentLink:String,maxDepth : Int) extends Actor{
 
